@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برنامه هفتگی</title>
+
+<!-- Home screen / PWA install support -->
+<link rel="manifest" href="data:application/manifest+json,%7B%0A%20%20%22name%22%3A%20%22%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%20%D9%87%D9%81%D8%AA%DA%AF%DB%8C%22%2C%0A%20%20%22short_name%22%3A%20%22%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%20%D9%87%D9%81%D8%AA%DA%AF%DB%8C%22%2C%0A%20%20%22description%22%3A%20%22%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%E2%80%8C%D8%B1%DB%8C%D8%B2%DB%8C%20%D9%87%D9%81%D8%AA%DA%AF%DB%8C%20%D9%88%20%D8%B9%D8%A7%D8%AF%D8%AA%E2%80%8C%D9%87%D8%A7%DB%8C%20%D8%B1%D9%88%D8%B2%D8%A7%D9%86%D9%87%22%2C%0A%20%20%22start_url%22%3A%20%22.%22%2C%0A%20%20%22display%22%3A%20%22standalone%22%2C%0A%20%20%22orientation%22%3A%20%22portrait%22%2C%0A%20%20%22background_color%22%3A%20%22%23EEF0E7%22%2C%0A%20%20%22theme_color%22%3A%20%22%23D1512D%22%2C%0A%20%20%22dir%22%3A%20%22rtl%22%2C%0A%20%20%22lang%22%3A%20%22fa%22%2C%0A%20%20%22icons%22%3A%20%5B%0A%20%20%20%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFn0lEQVR4nO3dS24bSRBF0aDg1RgQNPYyNPIaPdIyPBYEeDvyQKZMkVXFyspfRLx7ho2GzIberUzSsvtkzrw%2BP77Pfg3o5%2Bnl7TT7NVya%2BmIYO8zmRjH8F2b02DI6hmG/GMNHiVEhdP9FGD5q9A6h2xdn%2BGipVwjNvyjDR0%2BtQ3ho%2BcUYP3prvbEmNTF8zNDiNKg%2BARg/ZmmxvaoAGD9mq93g4QAYP7yo2eKhABg/vDm6yeIAGD%2B8OrLNogAYP7wr3ejuABg/oijZ6q4AGD%2Bi2bvZuwEwfkS1Z7tNfxQCiGYzAJ7%2BiO7ehlcDYPzIYmvLXIEgbTEAnv7IZm3TnACQdhMAT39ktbRtTgBI%2BxIAT39kd71xTgBI%2BwyApz9UXG6dEwDSCADSHsy4/kDPefOcAJBGAJBGAJBGAJB24g0wlHECQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQNq32S8AcX3/9Xvxn//5%2BWPwKzmOnwZFsbXhX4sQAlcgFNk7/tJ/dxYCwG5HBu09AgLALjVD9hwBAeAuzwOuRQAYwmtEBIBNXofbCgFgVfbxmxEAViiM34wAII4AcEPl6W9GALjSa/xefyyCAPBJ6cl/RgAws77j9/r0NyMAdOZ5/GYEANO791/iD8SI6zH%2BCMM/4wQQpj5%2BMwJAQ9HGb0YAshQ/8lxCAIK4%2BvxHAGIY/1cEIITx3yIAHBZ9/GYEIIM3vcsIQABXn3UEkBzj30YAKJJp/GYEkBr3/vsIICmuPvsQQEKMfz8CSIbxlyEAbMo8fjMCSIU3veUIIAmuPscQQAKM/zgCwA2V8ZsRQHjc%2B%2BsQQGBcfeoRQFCMvw0CCIjxt0MAkB2/GQGEw5vetkL/1YhrY8j6ROPq097p9fnxffaLKLV3CJm%2BuYy/j3BXoJIhcF1Yx/g/hArgyKAzRJDhv8GrMAHUjCDygLj69BUmAEWMv78QAbQYQrRTgPGPESKAVqJF0BLjXyYVQBTKoY4mF4D3cXH1GUsuADO/ETD%2B8SQDMPMbQUuM/74QAfT6RnqKwNNrURIigJ48DI%2BrzzxhAuj5DZ0ZAeOfK0wAZvkiYPzzhQrALF8ELTH%2BcuECMPv4Rkf/ZkePLYuQAfQ0YphcffwIHUDEj0cZvy%2BhAzCLGUFLjL9O%2BADM4kQQJSolKQIw8x8BVx%2Bf0gRg5jcCxu9XqgDM/EXA%2BH1LF4CZvwhaYvxtpQzAzEcEHoLBtrQBzMbVJ4bUAcw6BRh/HKkDMPNxFarF%2BPtJH4DZ2Ai498ciEYDZmAi4%2BsQT8q9HrxHpCc34%2B5M5Ac6ijCrK64xOLgAz/%2BPy/voykQzAjJHhg2wAZj4j8PiaMpMOwBvGP558AF5G5%2BV1qJEPwIzxKSOAf2ZGQIDzEMCFGUNk/HMRwJWRg2T88xHAghHDZPw%2BEMAKBqqBADb0ioC4/CCAwRi/LwRwB4PNjQB2aBUBMflDADsx3pwIoEBNBATkEwEUOjJkxu8XARxQMmjG75vcH4pvbe0P2TP8GAgA0rgCQRoBQBoBQBoBQBoBQBoBQBoBQBoBQNrD08vbafaLAGZ4enk7cQJAGgFAGgFAGgFA2oPZx5uB2S8EGOm8eU4ASCMASPsMgGsQVFxunRMA0r4EwCmA7K43zgkAaTcBcAogq6VtcwJA2mIAnALIZm3TnACQthoApwCy2Nry5glABIju3oa5AkHa3QA4BRDVnu3uOgGIANHs3ezuKxARIIqSrRa9ByACeFe60eI3wUQAr45s89CnQEQAb45u8vDHoEQAL2q2WPX7AESA2Wo3WP0bYUSAWVpsr%2Bl4%2BR/uYYSWD92mPwrBaYDeWm%2Bs22A5DdBSr4dr9yc2IaBG71vFsCsLIaDEqOv08Ds7IWDL6PeRU9%2B0EgPM5n544u5TG6LIzdsnhX8BtOUJXlM8fqkAAAAASUVORK5CYII%3D%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%22%7D%2C%0A%20%20%20%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFn0lEQVR4nO3dS24bSRBF0aDg1RgQNPYyNPIaPdIyPBYEeDvyQKZMkVXFyspfRLx7ho2GzIberUzSsvtkzrw%2BP77Pfg3o5%2Bnl7TT7NVya%2BmIYO8zmRjH8F2b02DI6hmG/GMNHiVEhdP9FGD5q9A6h2xdn%2BGipVwjNvyjDR0%2BtQ3ho%2BcUYP3prvbEmNTF8zNDiNKg%2BARg/ZmmxvaoAGD9mq93g4QAYP7yo2eKhABg/vDm6yeIAGD%2B8OrLNogAYP7wr3ejuABg/oijZ6q4AGD%2Bi2bvZuwEwfkS1Z7tNfxQCiGYzAJ7%2BiO7ehlcDYPzIYmvLXIEgbTEAnv7IZm3TnACQdhMAT39ktbRtTgBI%2BxIAT39kd71xTgBI%2BwyApz9UXG6dEwDSCADSHsy4/kDPefOcAJBGAJBGAJBGAJB24g0wlHECQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQNq32S8AcX3/9Xvxn//5%2BWPwKzmOnwZFsbXhX4sQAlcgFNk7/tJ/dxYCwG5HBu09AgLALjVD9hwBAeAuzwOuRQAYwmtEBIBNXofbCgFgVfbxmxEAViiM34wAII4AcEPl6W9GALjSa/xefyyCAPBJ6cl/RgAws77j9/r0NyMAdOZ5/GYEANO791/iD8SI6zH%2BCMM/4wQQpj5%2BMwJAQ9HGb0YAshQ/8lxCAIK4%2BvxHAGIY/1cEIITx3yIAHBZ9/GYEIIM3vcsIQABXn3UEkBzj30YAKJJp/GYEkBr3/vsIICmuPvsQQEKMfz8CSIbxlyEAbMo8fjMCSIU3veUIIAmuPscQQAKM/zgCwA2V8ZsRQHjc%2B%2BsQQGBcfeoRQFCMvw0CCIjxt0MAkB2/GQGEw5vetkL/1YhrY8j6ROPq097p9fnxffaLKLV3CJm%2BuYy/j3BXoJIhcF1Yx/g/hArgyKAzRJDhv8GrMAHUjCDygLj69BUmAEWMv78QAbQYQrRTgPGPESKAVqJF0BLjXyYVQBTKoY4mF4D3cXH1GUsuADO/ETD%2B8SQDMPMbQUuM/74QAfT6RnqKwNNrURIigJ48DI%2BrzzxhAuj5DZ0ZAeOfK0wAZvkiYPzzhQrALF8ELTH%2BcuECMPv4Rkf/ZkePLYuQAfQ0YphcffwIHUDEj0cZvy%2BhAzCLGUFLjL9O%2BADM4kQQJSolKQIw8x8BVx%2Bf0gRg5jcCxu9XqgDM/EXA%2BH1LF4CZvwhaYvxtpQzAzEcEHoLBtrQBzMbVJ4bUAcw6BRh/HKkDMPNxFarF%2BPtJH4DZ2Ai498ciEYDZmAi4%2BsQT8q9HrxHpCc34%2B5M5Ac6ijCrK64xOLgAz/%2BPy/voykQzAjJHhg2wAZj4j8PiaMpMOwBvGP558AF5G5%2BV1qJEPwIzxKSOAf2ZGQIDzEMCFGUNk/HMRwJWRg2T88xHAghHDZPw%2BEMAKBqqBADb0ioC4/CCAwRi/LwRwB4PNjQB2aBUBMflDADsx3pwIoEBNBATkEwEUOjJkxu8XARxQMmjG75vcH4pvbe0P2TP8GAgA0rgCQRoBQBoBQBoBQBoBQBoBQBoBQBoBQNrD08vbafaLAGZ4enk7cQJAGgFAGgFAGgFA2oPZx5uB2S8EGOm8eU4ASCMASPsMgGsQVFxunRMA0r4EwCmA7K43zgkAaTcBcAogq6VtcwJA2mIAnALIZm3TnACQthoApwCy2Nry5glABIju3oa5AkHa3QA4BRDVnu3uOgGIANHs3ezuKxARIIqSrRa9ByACeFe60eI3wUQAr45s89CnQEQAb45u8vDHoEQAL2q2WPX7AESA2Wo3WP0bYUSAWVpsr%2Bl4%2BR/uYYSWD92mPwrBaYDeWm%2Bs22A5DdBSr4dr9yc2IaBG71vFsCsLIaDEqOv08Ds7IWDL6PeRU9%2B0EgPM5n544u5TG6LIzdsnhX8BtOUJXlM8fqkAAAAASUVORK5CYII%3D%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22maskable%22%7D%2C%0A%20%20%20%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAR4ElEQVR4nO3cS44bRxqF0SzDq2lA8LiXoZHX2CMvo8eCgd6OelAumyrxzXj8EfecsQ0lk1TeL5O03w5K%2Bvb1y/fZxwDQwm9//Pk2%2Bxj4mTdlEgMP8E4gzOGkD2DsAR4jCvpzgjsw%2BABtCYL2nNAGDD7AWILgdU7gk4w%2BQA1i4DlO2gOMPkBtYuB%2BTtQNRh9gTWLgOifnAsMPsAchcJ6TcsLoA%2BxNDPzDiTgMP0AaIRAeAIYfIFtyCES%2BcMMPwKnEEIh6wYYfgGuSQiDihRp%2BAB6REAK/zD6A3ow/AI9K2I5tCyfhzQOgv12fBmz3ogw/AD3sFgJbfQVg/AHoZbeN2aJmdntTAKhth6cByz8BMP4AjLbD9iwdADu8AQCsafUNWvIRxuonHYC9rPiVwHJPAIw/ANWsuE1LBcCKJxiADKtt1BKPLFY7qQBkW%2BErgfJPAIw/AKtZYbtKB8AKJxAAzqm%2BYWUDoPqJA4BbKm9ZyQCofMIA4BFVN61cAFQ9UQDwrIrbVioAKp4gAGih2saVCYBqJwYAWqu0dSUCoNIJAYCeqmze9ACociIAYJQK2zc1ACqcAACYYfYGTguA2S8cAGabuYVTAsD4A8C7WZs4PACMPwD8aMY2Dg0A4w8A543eyGEBYPwB4LqRWzkkAIw/ANxn1GZO//8AAADjdQ8Ad/8A8JgR29k1AIw/ADyn94Z2CwDjDwCv6bmlfgMAAIG6BIC7fwBoo9emNg8A4w8AbfXY1qYBYPwBoI/WG%2Bs3AAAQqFkAuPsHgL5abm2TADD%2BADBGq831FQAABHo5ANz9A8BYLbbXEwAACPRSALj7B4A5Xt3gpwPA%2BAPAXK9ssa8AACDQUwHg7h8Aanh2kz0BAIBADweAu38AqOWZbfYEAAACPRQA7v4BoKZHN9oTAAAIdHcAuPsHgNoe2WpPAAAg0F0B4O4fANZw72Z7AgAAgQQAAAS6GQAe/wPAWu7Zbk8AACDQ1QBw9w8Aa7q14Z4AAEAgAQAAgS4GgMf/ALC2a1vuCQAABBIAABDobAB4/A8Ae7i06Z4AAEAgAQAAgX4KAI//AWAv57bdEwAACCQAACCQAACAQD8EgO//AWBPnzfeEwAACCQAACCQAACAQH8HgO//AWBvp1vvCQAABBIAABBIAABAIAEAAIF%2BOQ4/AASAFB%2Bb7wkAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAoDf/DwAAyOMJAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAECgX2cfAADz/Os//735z/zv938POBJGe/v29cv32QcBwBj3DP4tgmAPAgAgQIvh/0wIrE0AAGysx/B/JgTW5EeAAJsaMf4j/xzaEgAAGxo9yiJgPb4CANhIhSH2lcAaPAEA2ESF8T%2BOOsfBdQIAAAIJAIANVLvrrnY8/EwAACyu6thWPS7eCQCAhVUf2erHl0wAAEAgAQCwqFXurlc5zjQCAGBBRpVXCQCAxaw4/ise8%2B4EAMBCDCmtCAAACCQAABbh7p%2BWBADAAnYY/x1ew04EAEBxhpMeBAAABBIAAIW5%2B6cXAQBQlPGnJwEAUJDxpzcBAFCM8WcEAQAAgQQAQCHu/hlFAAAUsfv4/%2B/3f88%2BBE4IAIACdh9/6hEAAJMZf2YQAAAQSAAATJRy9%2B/7/3oEAMAkKeNPTQIAYIKk8Xf3X5MAAIBAAgBgMHf/VCAAAAYy/lQhAAAGMf5UIgAABkgaf9YgAABoyt3/Gn6dfQAAu0u5%2Bzf8a/EEAKAj409VAgCgE%2BNPZQIAoAPjT3UCAAACCQCAxtz9swIBANCQ8WcVAgCgEePPSgQAAAQSAAANuPtnNQIA4EXGnxUJAIAXGH9WJQAAnmT8WZkAAIBAAgDgCe7%2BWZ0AAHiQ8WcHAgDgAcafXQgAgDsZf3YiAAAgkAAAuIO7f3YjAABuMP7sSAAAXGH82ZUAAIBAAgDgAnf/7EwAAJxh/NmdAAD4xPiTQAAAnDD%2BpBAAABBIAAD8xd0/SQQAwGH8ySMAgHjGn0QCAIhm/EklAAAgkAAAYrn7J5kAACIZf9IJACCO8QcBAACRBAAQxd0/vBMAQAzjD/8QAEAE4w8/EgDA9ow//EwAAEAgAQBszd0/nCcAgG0Zf7hMAABbMv5wnQAAtmP84TYBAACBBACwFXf/cB8BAGzD%2BMP9BACwBeMPjxEAABBIAADLc/cPjxMAwNKMPzxHAADLMv7wPAEALMn4w2sEAAAEEgDActz9w%2BsEALAU4w9tCABgGcYf2hEAwBKMP7QlAAAgkAAAynP3D%2B0JAKA04w99CACgLOMP/QgAAAgkAICS3P1DXwIAKMf4Q38CACjF%2BMMYAgAow/jDOAIAAAIJAKAEd/8wlgAApjP%2BMJ4AAKYy/jCHAACmMf4wjwAAgEACAJjC3T/MJQCA4Yw/zPfr7ANgvnsuxi5ktGL8oQYBEOiZC/Dnf8fFDWBtb9%2B%2Bfvk%2B%2ByAYo8edlxDgEe7%2BoQ4BEGDERdcFj1uMP9TiR4CbG3XRTbm485yUz4fxZyUCYGOjL7opF3kek/K5MP6sxo8ANzTzgvvxZ7sYAtTmCcBmqtxtVTkO5kr5HAheViQAgC6MP9QmADZS7YJb7XgYJ%2BW9N/6sTABsouoFt%2Bpx0U/Ke278WZ0A2ED1C2714wNIJAAYQgRkSHmf3f2zAwGwuJQLLvWlfBaNP7sQAAyTMhCJUt5b489OBMDCVrzornjMADsSAAwnAvaS8n66%2B2c3AoApUkZjdynvo/FnRwKAaVLGY1cp75/xZ1cCYFG7XHx3eR1pUt4348/OBADTpYwJQCUCgBJEwDpS3it3/%2BxOAFBGyrCsLOU9Mv4kEADAXYw/7EUAUErKyKwm5X0x/iQRAJSTMjYAMwkAShIBdaS8F%2B7%2BSSMAKCtleCpLeQ%2BMP4kEwKJSLlgpA1RRyrlP%2BbsEnwkAyksZIoCRBABLEAFjpZxvd/8kEwAsI2WUZks5z8afdAJgYYkXsJRxmiXl/Cb%2B3YHPBABwHIfxhzQCYHGJF7OUoQLoSQCwJBHQVsr5TAxmuEQAbCD1opYyWr2lnMfUvydwiQDYROrFLWW8ekk5f6l/P%2BAaAbCR1Itcyoi1lnLeUv9ewC0CgC2kjBlAKwJgM8l3OyLgfinnKvnvA9zy9u3rl%2B%2BzD4I%2BUi7yn7noX5fyufA5gOs8AdiYCyCfGX/ggwDYXOKFMGXkAF4hAAKIAI4j55wkft7hGQIgROJFMWXw7pFyLhI/5/AsARAk8eKYMnzXpJyDxM83vEIAhEm8SKYM4Dkprz3xcw2vEgCBEi%2BWKUMIcC8BEEoE7C/l9SZ%2BlqEFARAs8cKZMooprzPxMwytCIBwiRfQ3cdx99f3IfGzCy0JAFxIN2L8gXsJACKlDCXAJQKA4zgy76h2i4DdXs8liZ9V6EEA8LfEC%2Bsuo7nL67gl8TMKvQgAfpB4gV19PFc//nslfjahJwHATxIvtCkjCvBBAHCWCFjDisf8jMTPI/QmALgo8aK70qCudKyvSPwcwggCgKsSL74rDOsKx9hC4ucPRhEA3JR4Ea48sJWPraXEzx2MJAC4i4sxwF4EAFxQ8U674jH1IDihPwHA3RIvypUGt9Kx9JT4OYMZBAAPSbw4VxjeCscwQuLnC2YRADws8SI9c4CNP9CDAOApiRfrlCEGMggAniYC9vvzZkn8LMFsAoCXJF64R42y8Qd6EgC8LPEC3nucjT/QmwCgicQLecpIA3sSAFBMSlgkRiNUIgBoJvGC3nqsjT8wigCgqcQLe6vRNv7ASAKA5hIv8K%2BOt/EHRhMAdJF4oU8ZcWAPAoBuREC/f2dFiZ8HqEwA0FXiRf%2BRQTf%2BwCwCgO4SL/73DLvxB2YSAAyROALXBt74A7MJAIYxBgB1CADo6Nydvrt/oAIBwFCJo3A6%2BMYfqOLt29cv32cfBHlShjCR8Yc1eALAFEYCYC4BwDQiYD/eU1iHAGAqg7EP7yWsRQAwneFYn/cQ1iMAKMGArMt7B2sSAJRhSADGEQCUIgLW4v2CdQkA4CnGH9YmACjHsNTnPYL1CQBKMjB1eW9gDwKAsgwNQD8CgNJEQC3eD9iHAKA8o1OD9wH2IgBYgvGZy/mH/QgAlmGEANoRACxFBIznnMOeBADLMUjjONewLwEAnGX8YW8CgCUZp76cX9ifAGBZRgrgeQKApYmA9pxTyCAAWJ7Base5hBwCgC0Yrtc5h5BFALANA/Y85w7yCAC2YsgA7iMA2I4IeIzzBZkEAAQz/pBLALAlw3abcwTZBADbMnAAlwkAtiYCznNeAAHA9ozdj5wP4DgEACGM3jvnAfggAIiRPn7prx/4kQAgihEEeCcAiJMYAYmvGbhOABApaRCTXitwPwEAGzP%2BwCUCgFi7j%2BPurw94jQAgmpEEUgkA4u0YATu%2BJqAtAQDHXoO502sB%2BhEA8JcdhnOH1wCMIQDghAEFUggA%2BGTVCFj1uIE5BACcsdqYrna8wHwCAAACCQC4YJW76lWOE6hFAABAIAEAV1S/u65%2BfEBdAgBuqDqyVY8LWIMAgDtUG9tqxwOsRwAAQCABAHeqctdd5TiAtb19%2B/rl%2B%2ByDgNX86z//Hf5nGn6gJU8A4Amjx9j4A60JAHjSqFE2/kAPvgKABnp8JWD4gZ4EADTUIgQMPzCCAICO7gkCgw/MIAAAIJAfAQJAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAECgX37748%2B32QcBAIzz2x9/vnkCAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEOiX43j/7wFnHwgA0N/H5nsCAACBBAAABBIAABBIAABAoL8DwA8BAWBvp1vvCQAABBIAABBIAABAoB8CwO8AAGBPnzfeEwAACCQAACCQAACAQD8FgN8BAMBezm27JwAAEEgAAECgswHgawAA2MOlTfcEAAACCQAACHQxAHwNAABru7blngAAQCABAACBrgaArwEAYE23NtwTAAAIdDMAPAUAgLXcs92eAABAIAEAAIHuCgBfAwDAGu7dbE8AACDQ3QHgKQAA1PbIVnsCAACBHgoATwEAoKZHN9oTAAAI9HAAeAoAALU8s82eAABAoKcCwFMAAKjh2U32BAAAAj0dAJ4CAMBcr2zxS08ARAAAzPHqBvsKAAACvRwAngIAwFgtttcTAAAI1CQAPAUAgDFabW6zJwAiAAD6arm1vgIAgEBNA8BTAADoo/XGNn8CIAIAoK0e29rlKwARAABt9NpUvwEAgEDdAsBTAAB4Tc8t7foEQAQAwHN6b2j3rwBEAAA8ZsR2%2Bg0AAAQaEgCeAgDAfUZt5rAnACIAAK4buZVDvwIQAQBw3uiNHP4bABEAAD%2BasY1TfgQoAgDg3axNnPZfAYgAANLN3MKp/xmgCAAg1ewNnP7/AZh9AgBgtArbNz0AjqPGiQCAEapsXokAOI46JwQAeqm0dWUC4DhqnRgAaKnaxpUKgOOod4IA4FUVt61cABxHzRMFAM%2BoumklA%2BA46p4wALhX5S0rGwDHUfvEAcA11TesdAAcR/0TCACfrbBd5Q/w1LevX77PPgYAuGSF4f9Q/gnAqZVOLABZVtuopQLgONY7wQDsb8VtWu6AT/lKAICZVhz%2BD8s9ATi18okHYG2rb9DSAXAc678BAKxnh%2B1Z/gWc8pUAAD3tMPwfln8CcGqnNwaAWnbbmK1ezClPAwBoYbfh/7DlizolBAB4xq7D/2GrrwDO2f0NBKC9hO3Y/gWe8jQAgGsShv9DzAs9JQQAOJU0/B/iXvApIQCQLXH4P8S%2B8FNCACBL8vB/iD8Bp4QAwN4M/z%2BciAvEAMAejP55TsoNQgBgTYb/OifnAWIAoDajfz8n6kliAKAGo/8cJ60BMQAwltF/nRPYgSAAaMvgt%2BeEDiAIAB5j8PtzgicRBQDvjP0cTnpRAgHYhYGv6f9K5mK/S%2BxqmwAAAABJRU5ErkJggg%3D%3D%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%22%7D%2C%0A%20%20%20%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAR4ElEQVR4nO3cS44bRxqF0SzDq2lA8LiXoZHX2CMvo8eCgd6OelAumyrxzXj8EfecsQ0lk1TeL5O03w5K%2Bvb1y/fZxwDQwm9//Pk2%2Bxj4mTdlEgMP8E4gzOGkD2DsAR4jCvpzgjsw%2BABtCYL2nNAGDD7AWILgdU7gk4w%2BQA1i4DlO2gOMPkBtYuB%2BTtQNRh9gTWLgOifnAsMPsAchcJ6TcsLoA%2BxNDPzDiTgMP0AaIRAeAIYfIFtyCES%2BcMMPwKnEEIh6wYYfgGuSQiDihRp%2BAB6REAK/zD6A3ow/AI9K2I5tCyfhzQOgv12fBmz3ogw/AD3sFgJbfQVg/AHoZbeN2aJmdntTAKhth6cByz8BMP4AjLbD9iwdADu8AQCsafUNWvIRxuonHYC9rPiVwHJPAIw/ANWsuE1LBcCKJxiADKtt1BKPLFY7qQBkW%2BErgfJPAIw/AKtZYbtKB8AKJxAAzqm%2BYWUDoPqJA4BbKm9ZyQCofMIA4BFVN61cAFQ9UQDwrIrbVioAKp4gAGih2saVCYBqJwYAWqu0dSUCoNIJAYCeqmze9ACociIAYJQK2zc1ACqcAACYYfYGTguA2S8cAGabuYVTAsD4A8C7WZs4PACMPwD8aMY2Dg0A4w8A543eyGEBYPwB4LqRWzkkAIw/ANxn1GZO//8AAADjdQ8Ad/8A8JgR29k1AIw/ADyn94Z2CwDjDwCv6bmlfgMAAIG6BIC7fwBoo9emNg8A4w8AbfXY1qYBYPwBoI/WG%2Bs3AAAQqFkAuPsHgL5abm2TADD%2BADBGq831FQAABHo5ANz9A8BYLbbXEwAACPRSALj7B4A5Xt3gpwPA%2BAPAXK9ssa8AACDQUwHg7h8Aanh2kz0BAIBADweAu38AqOWZbfYEAAACPRQA7v4BoKZHN9oTAAAIdHcAuPsHgNoe2WpPAAAg0F0B4O4fANZw72Z7AgAAgQQAAAS6GQAe/wPAWu7Zbk8AACDQ1QBw9w8Aa7q14Z4AAEAgAQAAgS4GgMf/ALC2a1vuCQAABBIAABDobAB4/A8Ae7i06Z4AAEAgAQAAgX4KAI//AWAv57bdEwAACCQAACCQAACAQD8EgO//AWBPnzfeEwAACCQAACCQAACAQH8HgO//AWBvp1vvCQAABBIAABBIAABAIAEAAIF%2BOQ4/AASAFB%2Bb7wkAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAoDf/DwAAyOMJAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAECgX2cfAADz/Os//735z/zv938POBJGe/v29cv32QcBwBj3DP4tgmAPAgAgQIvh/0wIrE0AAGysx/B/JgTW5EeAAJsaMf4j/xzaEgAAGxo9yiJgPb4CANhIhSH2lcAaPAEA2ESF8T%2BOOsfBdQIAAAIJAIANVLvrrnY8/EwAACyu6thWPS7eCQCAhVUf2erHl0wAAEAgAQCwqFXurlc5zjQCAGBBRpVXCQCAxaw4/ise8%2B4EAMBCDCmtCAAACCQAABbh7p%2BWBADAAnYY/x1ew04EAEBxhpMeBAAABBIAAIW5%2B6cXAQBQlPGnJwEAUJDxpzcBAFCM8WcEAQAAgQQAQCHu/hlFAAAUsfv4/%2B/3f88%2BBE4IAIACdh9/6hEAAJMZf2YQAAAQSAAATJRy9%2B/7/3oEAMAkKeNPTQIAYIKk8Xf3X5MAAIBAAgBgMHf/VCAAAAYy/lQhAAAGMf5UIgAABkgaf9YgAABoyt3/Gn6dfQAAu0u5%2Bzf8a/EEAKAj409VAgCgE%2BNPZQIAoAPjT3UCAAACCQCAxtz9swIBANCQ8WcVAgCgEePPSgQAAAQSAAANuPtnNQIA4EXGnxUJAIAXGH9WJQAAnmT8WZkAAIBAAgDgCe7%2BWZ0AAHiQ8WcHAgDgAcafXQgAgDsZf3YiAAAgkAAAuIO7f3YjAABuMP7sSAAAXGH82ZUAAIBAAgDgAnf/7EwAAJxh/NmdAAD4xPiTQAAAnDD%2BpBAAABBIAAD8xd0/SQQAwGH8ySMAgHjGn0QCAIhm/EklAAAgkAAAYrn7J5kAACIZf9IJACCO8QcBAACRBAAQxd0/vBMAQAzjD/8QAEAE4w8/EgDA9ow//EwAAEAgAQBszd0/nCcAgG0Zf7hMAABbMv5wnQAAtmP84TYBAACBBACwFXf/cB8BAGzD%2BMP9BACwBeMPjxEAABBIAADLc/cPjxMAwNKMPzxHAADLMv7wPAEALMn4w2sEAAAEEgDActz9w%2BsEALAU4w9tCABgGcYf2hEAwBKMP7QlAAAgkAAAynP3D%2B0JAKA04w99CACgLOMP/QgAAAgkAICS3P1DXwIAKMf4Q38CACjF%2BMMYAgAow/jDOAIAAAIJAKAEd/8wlgAApjP%2BMJ4AAKYy/jCHAACmMf4wjwAAgEACAJjC3T/MJQCA4Yw/zPfr7ANgvnsuxi5ktGL8oQYBEOiZC/Dnf8fFDWBtb9%2B%2Bfvk%2B%2ByAYo8edlxDgEe7%2BoQ4BEGDERdcFj1uMP9TiR4CbG3XRTbm485yUz4fxZyUCYGOjL7opF3kek/K5MP6sxo8ANzTzgvvxZ7sYAtTmCcBmqtxtVTkO5kr5HAheViQAgC6MP9QmADZS7YJb7XgYJ%2BW9N/6sTABsouoFt%2Bpx0U/Ke278WZ0A2ED1C2714wNIJAAYQgRkSHmf3f2zAwGwuJQLLvWlfBaNP7sQAAyTMhCJUt5b489OBMDCVrzornjMADsSAAwnAvaS8n66%2B2c3AoApUkZjdynvo/FnRwKAaVLGY1cp75/xZ1cCYFG7XHx3eR1pUt4348/OBADTpYwJQCUCgBJEwDpS3it3/%2BxOAFBGyrCsLOU9Mv4kEADAXYw/7EUAUErKyKwm5X0x/iQRAJSTMjYAMwkAShIBdaS8F%2B7%2BSSMAKCtleCpLeQ%2BMP4kEwKJSLlgpA1RRyrlP%2BbsEnwkAyksZIoCRBABLEAFjpZxvd/8kEwAsI2WUZks5z8afdAJgYYkXsJRxmiXl/Cb%2B3YHPBABwHIfxhzQCYHGJF7OUoQLoSQCwJBHQVsr5TAxmuEQAbCD1opYyWr2lnMfUvydwiQDYROrFLWW8ekk5f6l/P%2BAaAbCR1Itcyoi1lnLeUv9ewC0CgC2kjBlAKwJgM8l3OyLgfinnKvnvA9zy9u3rl%2B%2BzD4I%2BUi7yn7noX5fyufA5gOs8AdiYCyCfGX/ggwDYXOKFMGXkAF4hAAKIAI4j55wkft7hGQIgROJFMWXw7pFyLhI/5/AsARAk8eKYMnzXpJyDxM83vEIAhEm8SKYM4Dkprz3xcw2vEgCBEi%2BWKUMIcC8BEEoE7C/l9SZ%2BlqEFARAs8cKZMooprzPxMwytCIBwiRfQ3cdx99f3IfGzCy0JAFxIN2L8gXsJACKlDCXAJQKA4zgy76h2i4DdXs8liZ9V6EEA8LfEC%2Bsuo7nL67gl8TMKvQgAfpB4gV19PFc//nslfjahJwHATxIvtCkjCvBBAHCWCFjDisf8jMTPI/QmALgo8aK70qCudKyvSPwcwggCgKsSL74rDOsKx9hC4ucPRhEA3JR4Ea48sJWPraXEzx2MJAC4i4sxwF4EAFxQ8U674jH1IDihPwHA3RIvypUGt9Kx9JT4OYMZBAAPSbw4VxjeCscwQuLnC2YRADws8SI9c4CNP9CDAOApiRfrlCEGMggAniYC9vvzZkn8LMFsAoCXJF64R42y8Qd6EgC8LPEC3nucjT/QmwCgicQLecpIA3sSAFBMSlgkRiNUIgBoJvGC3nqsjT8wigCgqcQLe6vRNv7ASAKA5hIv8K%2BOt/EHRhMAdJF4oU8ZcWAPAoBuREC/f2dFiZ8HqEwA0FXiRf%2BRQTf%2BwCwCgO4SL/73DLvxB2YSAAyROALXBt74A7MJAIYxBgB1CADo6Nydvrt/oAIBwFCJo3A6%2BMYfqOLt29cv32cfBHlShjCR8Yc1eALAFEYCYC4BwDQiYD/eU1iHAGAqg7EP7yWsRQAwneFYn/cQ1iMAKMGArMt7B2sSAJRhSADGEQCUIgLW4v2CdQkA4CnGH9YmACjHsNTnPYL1CQBKMjB1eW9gDwKAsgwNQD8CgNJEQC3eD9iHAKA8o1OD9wH2IgBYgvGZy/mH/QgAlmGEANoRACxFBIznnMOeBADLMUjjONewLwEAnGX8YW8CgCUZp76cX9ifAGBZRgrgeQKApYmA9pxTyCAAWJ7Base5hBwCgC0Yrtc5h5BFALANA/Y85w7yCAC2YsgA7iMA2I4IeIzzBZkEAAQz/pBLALAlw3abcwTZBADbMnAAlwkAtiYCznNeAAHA9ozdj5wP4DgEACGM3jvnAfggAIiRPn7prx/4kQAgihEEeCcAiJMYAYmvGbhOABApaRCTXitwPwEAGzP%2BwCUCgFi7j%2BPurw94jQAgmpEEUgkA4u0YATu%2BJqAtAQDHXoO502sB%2BhEA8JcdhnOH1wCMIQDghAEFUggA%2BGTVCFj1uIE5BACcsdqYrna8wHwCAAACCQC4YJW76lWOE6hFAABAIAEAV1S/u65%2BfEBdAgBuqDqyVY8LWIMAgDtUG9tqxwOsRwAAQCABAHeqctdd5TiAtb19%2B/rl%2B%2ByDgNX86z//Hf5nGn6gJU8A4Amjx9j4A60JAHjSqFE2/kAPvgKABnp8JWD4gZ4EADTUIgQMPzCCAICO7gkCgw/MIAAAIJAfAQJAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAECgX37748%2B32QcBAIzz2x9/vnkCAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEOiX43j/7wFnHwgA0N/H5nsCAACBBAAABBIAABBIAABAoL8DwA8BAWBvp1vvCQAABBIAABBIAABAoB8CwO8AAGBPnzfeEwAACCQAACCQAACAQD8FgN8BAMBezm27JwAAEEgAAECgswHgawAA2MOlTfcEAAACCQAACHQxAHwNAABru7blngAAQCABAACBrgaArwEAYE23NtwTAAAIdDMAPAUAgLXcs92eAABAIAEAAIHuCgBfAwDAGu7dbE8AACDQ3QHgKQAA1PbIVnsCAACBHgoATwEAoKZHN9oTAAAI9HAAeAoAALU8s82eAABAoKcCwFMAAKjh2U32BAAAAj0dAJ4CAMBcr2zxS08ARAAAzPHqBvsKAAACvRwAngIAwFgtttcTAAAI1CQAPAUAgDFabW6zJwAiAAD6arm1vgIAgEBNA8BTAADoo/XGNn8CIAIAoK0e29rlKwARAABt9NpUvwEAgEDdAsBTAAB4Tc8t7foEQAQAwHN6b2j3rwBEAAA8ZsR2%2Bg0AAAQaEgCeAgDAfUZt5rAnACIAAK4buZVDvwIQAQBw3uiNHP4bABEAAD%2BasY1TfgQoAgDg3axNnPZfAYgAANLN3MKp/xmgCAAg1ewNnP7/AZh9AgBgtArbNz0AjqPGiQCAEapsXokAOI46JwQAeqm0dWUC4DhqnRgAaKnaxpUKgOOod4IA4FUVt61cABxHzRMFAM%2BoumklA%2BA46p4wALhX5S0rGwDHUfvEAcA11TesdAAcR/0TCACfrbBd5Q/w1LevX77PPgYAuGSF4f9Q/gnAqZVOLABZVtuopQLgONY7wQDsb8VtWu6AT/lKAICZVhz%2BD8s9ATi18okHYG2rb9DSAXAc678BAKxnh%2B1Z/gWc8pUAAD3tMPwfln8CcGqnNwaAWnbbmK1ezClPAwBoYbfh/7DlizolBAB4xq7D/2GrrwDO2f0NBKC9hO3Y/gWe8jQAgGsShv9DzAs9JQQAOJU0/B/iXvApIQCQLXH4P8S%2B8FNCACBL8vB/iD8Bp4QAwN4M/z%2BciAvEAMAejP55TsoNQgBgTYb/OifnAWIAoDajfz8n6kliAKAGo/8cJ60BMQAwltF/nRPYgSAAaMvgt%2BeEDiAIAB5j8PtzgicRBQDvjP0cTnpRAgHYhYGv6f9K5mK/S%2BxqmwAAAABJRU5ErkJggg%3D%3D%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22maskable%22%7D%0A%20%20%5D%0A%7D">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFn0lEQVR4nO3dS24bSRBF0aDg1RgQNPYyNPIaPdIyPBYEeDvyQKZMkVXFyspfRLx7ho2GzIberUzSsvtkzrw+P77Pfg3o5+nl7TT7NVya+mIYO8zmRjH8F2b02DI6hmG/GMNHiVEhdP9FGD5q9A6h2xdn+GipVwjNvyjDR0+tQ3ho+cUYP3prvbEmNTF8zNDiNKg+ARg/ZmmxvaoAGD9mq93g4QAYP7yo2eKhABg/vDm6yeIAGD+8OrLNogAYP7wr3ejuABg/oijZ6q4AGD+i2bvZuwEwfkS1Z7tNfxQCiGYzAJ7+iO7ehlcDYPzIYmvLXIEgbTEAnv7IZm3TnACQdhMAT39ktbRtTgBI+xIAT39kd71xTgBI+wyApz9UXG6dEwDSCADSHsy4/kDPefOcAJBGAJBGAJBGAJB24g0wlHECQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQBoBQNq32S8AcX3/9Xvxn//5+WPwKzmOnwZFsbXhX4sQAlcgFNk7/tJ/dxYCwG5HBu09AgLALjVD9hwBAeAuzwOuRQAYwmtEBIBNXofbCgFgVfbxmxEAViiM34wAII4AcEPl6W9GALjSa/xefyyCAPBJ6cl/RgAws77j9/r0NyMAdOZ5/GYEANO791/iD8SI6zH+CMM/4wQQpj5+MwJAQ9HGb0YAshQ/8lxCAIK4+vxHAGIY/1cEIITx3yIAHBZ9/GYEIIM3vcsIQABXn3UEkBzj30YAKJJp/GYEkBr3/vsIICmuPvsQQEKMfz8CSIbxlyEAbMo8fjMCSIU3veUIIAmuPscQQAKM/zgCwA2V8ZsRQHjc++sQQGBcfeoRQFCMvw0CCIjxt0MAkB2/GQGEw5vetkL/1YhrY8j6ROPq097p9fnxffaLKLV3CJm+uYy/j3BXoJIhcF1Yx/g/hArgyKAzRJDhv8GrMAHUjCDygLj69BUmAEWMv78QAbQYQrRTgPGPESKAVqJF0BLjXyYVQBTKoY4mF4D3cXH1GUsuADO/ETD+8SQDMPMbQUuM/74QAfT6RnqKwNNrURIigJ48DI+rzzxhAuj5DZ0ZAeOfK0wAZvkiYPzzhQrALF8ELTH+cuECMPv4Rkf/ZkePLYuQAfQ0YphcffwIHUDEj0cZvy+hAzCLGUFLjL9O+ADM4kQQJSolKQIw8x8BVx+f0gRg5jcCxu9XqgDM/EXA+H1LF4CZvwhaYvxtpQzAzEcEHoLBtrQBzMbVJ4bUAcw6BRh/HKkDMPNxFarF+PtJH4DZ2Ai498ciEYDZmAi4+sQT8q9HrxHpCc34+5M5Ac6ijCrK64xOLgAz/+Py/voykQzAjJHhg2wAZj4j8PiaMpMOwBvGP558AF5G5+V1qJEPwIzxKSOAf2ZGQIDzEMCFGUNk/HMRwJWRg2T88xHAghHDZPw+EMAKBqqBADb0ioC4/CCAwRi/LwRwB4PNjQB2aBUBMflDADsx3pwIoEBNBATkEwEUOjJkxu8XARxQMmjG75vcH4pvbe0P2TP8GAgA0rgCQRoBQBoBQBoBQBoBQBoBQBoBQBoBQNrD08vbafaLAGZ4enk7cQJAGgFAGgFAGgFA2oPZx5uB2S8EGOm8eU4ASCMASPsMgGsQVFxunRMA0r4EwCmA7K43zgkAaTcBcAogq6VtcwJA2mIAnALIZm3TnACQthoApwCy2Nry5glABIju3oa5AkHa3QA4BRDVnu3uOgGIANHs3ezuKxARIIqSrRa9ByACeFe60eI3wUQAr45s89CnQEQAb45u8vDHoEQAL2q2WPX7AESA2Wo3WP0bYUSAWVpsr+l4+R/uYYSWD92mPwrBaYDeWm+s22A5DdBSr4dr9yc2IaBG71vFsCsLIaDEqOv08Ds7IWDL6PeRU9+0EgPM5n544u5TG6LIzdsnhX8BtOUJXlM8fqkAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAE/UlEQVR4nO3dTW4bVxRE4aKQ1RgwNM4yMsoaM9IyPDYEeDvJwJEgiU3ydff7ubfu+YaGITXAw9ITSaEvCuDnX9//XX0NOO/55fWy+hqWXAAB17Ai8GnfkIhrmxX30G9CxNgyMu4hX5iQ0WJE2E+9vyAxo9WIVro9QwgZZ/Ra6y4LTcw4q1dDp54VhIwRzqz14YUmZoxypq1DQRMzRjva2O6giRmzHGltV9DEjNn2NtccNDFjlT3tNQVNzFittcGHQRMzomhpsftb38BKd4NmnRHNoyZvBk3MiOpemxw5YGUzaNYZ0d1q9CpoYkYWW61y5ICVT0Gzzsjma7MsNKwQNKy8B81xA1l9bJeFhhWChpUnieMG8ntrmIWGFYKGFYKGlQvnZzhhoWGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGHlj9UXgJi+/fPj6t9+/f3ngivZh0/b4ZOtkL+KHDZHDrxriXnP/1uBoCFpf6RRoyZoHI4zYtQEDSsEXdzZlY220gQNKwRdWLR17YGgi3KMWSLoklxjlgi6nN4xR3vXkKBhhaALcV9niaDLqBCzRNAlVIlZImiYIWhzldZZImhr1WKWCNpWxZglgrZUNWaJoGGGoM1UXmeJoK1Uj1kiaBvE/BtBG3D+OOheBI0rWddZIuj0OGp8RtCJEfM1gk6KmLcRNKwQdEKs820EnQwx30fQiRDzYwSdBDG3IWhYIegEWOd2BB0cMe9D0IER834EHRSfoDuGoIuosM5SwhtvZr0h5B4cNY5Lc+PN7DeEbEXM56Q4cjjcELIFMZ8XPmiXG0JijtBBO90Q8hHWuY/QQZ+RKWpi7ids0D0e5AxRE3NfYYPuJXLUxNyffdBS7KjRV4mgI2KdxygTdKSVJuZxwgY94kGKEDUxjxU26FFWRh3hCeUudNCj1sclLNb5WuigJZ+oOWrMET5oKX/UxDxPmo+PvhkR4chAiHmuFAv9keurH+gjXdBSnqhZ5/lSBj1KzwCJeY20QUd+gIl5nbRBSzGPHsS8VuqgpZhRY530QUtxomad17MIWlofNTHHYBO0tC5qYo7DKmhpftSct2OxC1paf/w4g3U+xzJoaU7UHDXisQ1aGhs1MceU7tN2R0Q/5xJzP9YLjXpKBB15ASNfW0YlgpZihhPxmrIrE7QUK6BI1+KkVNBSjJAiXIOrckFLBOWsZNDSuqh5Mo1VNmhpflzEPF7poKV5kRHzHOWDlojNCUH/b2TUPGHmIejBiHkugv6gd3zEPB9Bf9ErQmJeg6A3EGNeBD0AT4h1CPqGo1ES81oEfcfeOIl5PYJ+oDVSYo6hxN8U9rL1t4mEHAtBwwpHDlghaFghaFghaFghaFghaFghaFghaFh5en55vay+CKCH55fXCwsNKwQNKwQNK0/S77PH6gsBznhrmIWGFYKGlfegOXYgq4/tstCwQtCw8ilojh3I5muzLDSsXAXNSiOLrVY3F5qoEd2tRjlywMrNoFlpRHWvzbsLTdSI5lGTHDlg5WHQrDSiaGmxaaGJGqu1Nth85CBqrLKnvV1naKLGbHub2/1LIVFjliOtHXqVg6gx2tHGDr9sR9QY5UxbXaLkLgDoocdIdnljhbXGWb0a6h4ia409eo9h97e+WWu0GtHK0PhYa2wZOXrT1pS4a5v1k3vJ8YC4a1hx/Axx3iVwDxF+f/oP3jTsuJlMCk0AAAAASUVORK5CYII=">
+<meta name="theme-color" content="#EEF0E7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="برنامه هفتگی">
+<style>
+  :root{
+    --bg:#EEF0E7;
+    --card:#FBFAF4;
+    --ink:#202B22;
+    --ink-soft:#5B6B5C;
+    --line:#D6D9C6;
+    --coral:#D1512D;
+    --habit:#4E7A8C;
+    --idea:#B98B2E;
+    --remind:#7A6C93;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(32,43,34,0.05) 1px, transparent 0);
+    background-size: 22px 22px;
+    color:var(--ink);
+    font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+    min-height:100vh;
+    padding: 28px 20px 60px;
+  }
+  .wrap{ max-width: 1180px; margin: 0 auto; }
+
+  header{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 16px;
+    padding-bottom: 18px;
+    margin-bottom: 26px;
+    border-bottom: 2px solid var(--ink);
+    flex-wrap: wrap;
+  }
+  header .titles h1{
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  header .titles p{
+    margin:0;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+  .overall{
+    text-align:left;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .overall b{
+    color: var(--coral);
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  /* ---------- ideas ---------- */
+  .ideas{
+    background: var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding: 16px 16px 14px;
+    margin-bottom: 24px;
+  }
+  .idea-list{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    margin-bottom: 10px;
+  }
+  .idea-item{
+    padding: 8px 2px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .idea-item:last-child{ border-bottom:none; }
+  .idea-row{
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    gap:8px;
+  }
+  .idea-row .txt{ flex-basis: 140px; }
+  .idea-row .bullet{
+    width:6px;height:6px;border-radius:50%;
+    background: var(--idea);
+    flex:0 0 auto;
+    margin-top:8px;
+  }
+  .idea-row .txt{
+    flex:1;
+    font-size:14px;
+    line-height:1.55;
+    outline:none;
+    word-break: break-word;
+  }
+  .idea-row .stars{
+    flex:0 0 auto;
+    display:flex;
+    gap:1px;
+  }
+  .idea-row .stars button{
+    border:none;
+    background:none;
+    font-size:15px;
+    line-height:1;
+    cursor:pointer;
+    color: var(--line);
+    padding: 2px 0;
+  }
+  .idea-row .stars button.on{ color: var(--idea); }
+
+  .idea-row .cat{
+    flex:0 0 auto;
+    font-size:11.5px;
+    font-weight:700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    outline:none;
+    cursor:text;
+    white-space:nowrap;
+    background: color-mix(in srgb, var(--cc) 16%, transparent);
+    color: var(--cc);
+  }
+  .idea-row .cat:empty::before{
+    content: attr(data-placeholder);
+    opacity:.75;
+  }
+  .idea-row .note-toggle{
+    flex:0 0 auto;
+    border:none;
+    background:none;
+    color: var(--ink-soft);
+    font-size:12px;
+    cursor:pointer;
+    opacity:0;
+    transition: opacity .12s;
+    white-space:nowrap;
+    padding: 2px 4px;
+  }
+  .idea-row .note-toggle.has-note{ opacity:1; color: var(--habit); }
+  .idea-item:hover .note-toggle{ opacity:1; }
+  .idea-row .del{
+    flex:0 0 auto;
+    border:none;
+    background:none;
+    color: var(--ink-soft);
+    font-size:16px;
+    cursor:pointer;
+    opacity:0;
+    transition: opacity .12s;
+  }
+  .idea-item:hover .del{ opacity:1; }
+
+  .idea-note{
+    margin: 6px 0 2px 20px;
+    padding: 8px 10px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.6;
+    outline: none;
+    color: var(--ink-soft);
+    min-height: 34px;
+  }
+  .idea-note:focus{ color: var(--ink); border-color: var(--idea); }
+  .idea-note:empty::before{
+    content: attr(data-placeholder);
+    color: var(--ink-soft);
+    opacity: .7;
+  }
+
+  /* ---------- reminders ---------- */
+  .reminders{
+    background: var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding: 16px 16px 14px;
+    margin-bottom: 24px;
+  }
+  .rem-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom: 4px;
+  }
+  .rem-add-toggle{
+    border:1px solid var(--line);
+    background:transparent;
+    color: var(--remind);
+    font-size:12.5px;
+    font-weight:700;
+    padding: 6px 12px;
+    border-radius:20px;
+    cursor:pointer;
+  }
+  .rem-add-toggle:hover{ border-color: var(--remind); }
+
+  .rem-form{
+    background: var(--bg);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding: 12px;
+    margin: 12px 0 16px;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .rem-form .full{ grid-column: 1 / -1; }
+  .rem-form label{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    font-size:12px;
+    color: var(--ink-soft);
+    font-weight:600;
+  }
+  .rem-form input, .rem-form select{
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:5px;
+    padding: 7px 9px;
+    font-family:inherit;
+    font-size:13px;
+    color:var(--ink);
+    outline:none;
+  }
+  .rem-form input:focus, .rem-form select:focus{ border-color: var(--remind); }
+  .rem-form .actions{
+    grid-column: 1 / -1;
+    display:flex;
+    gap:8px;
+    justify-content:flex-end;
+    margin-top:2px;
+  }
+  .rem-form .save-btn{
+    border:none;
+    background: var(--remind);
+    color:#fff;
+    padding: 8px 18px;
+    border-radius:5px;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .rem-form .cancel-btn{
+    border:1px solid var(--line);
+    background:transparent;
+    color: var(--ink-soft);
+    padding: 8px 14px;
+    border-radius:5px;
+    font-family:inherit;
+    font-size:13px;
+    cursor:pointer;
+  }
+  @media (max-width:560px){ .rem-form{ grid-template-columns: 1fr; } }
+
+  .rem-group-label{
+    font-size:11.5px;
+    font-weight:700;
+    color: var(--ink-soft);
+    margin: 14px 0 6px;
+  }
+  .rem-list{ display:flex; flex-direction:column; gap:2px; }
+  .rem-item{
+    padding: 9px 2px;
+    border-bottom: 1px dashed var(--line);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
+  }
+  .rem-item:last-child{ border-bottom:none; }
+  .rem-item.overdue{ background: color-mix(in srgb, var(--coral) 6%, transparent); border-radius:5px; }
+  .rem-item .prio{
+    flex:0 0 auto;
+    width:8px;height:8px;border-radius:50%;
+  }
+  .rem-item .body{
+    flex:1;
+    min-width: 140px;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .rem-item .txt{
+    font-size:14px;
+    outline:none;
+    word-break:break-word;
+  }
+  .rem-item.done .txt{ text-decoration:line-through; color:var(--ink-soft); }
+  .rem-item .meta{
+    font-size:11.5px;
+    color: var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .rem-item .daytag{
+    font-size:10.5px;
+    font-weight:700;
+    padding:1px 7px;
+    border-radius:20px;
+    background: color-mix(in srgb, var(--tc) 16%, transparent);
+    color: var(--tc);
+  }
+  .rem-item .btns{
+    flex:0 0 auto;
+    display:flex;
+    gap:4px;
+  }
+  .rem-item .btns button{
+    border:1px solid var(--line);
+    background:#fff;
+    color: var(--ink-soft);
+    font-size:11px;
+    padding: 4px 8px;
+    border-radius:5px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .rem-item .btns button:hover{ border-color: var(--remind); color: var(--remind); }
+  .rem-item .btns button.danger:hover{ border-color: var(--coral); color: var(--coral); }
+  .rem-empty{
+    color: var(--ink-soft);
+    font-size:13px;
+    padding: 4px 2px 6px;
+  }
+  .rem-archive-toggle{
+    border:none;
+    background:none;
+    color: var(--ink-soft);
+    font-size:12px;
+    font-weight:600;
+    cursor:pointer;
+    padding: 6px 2px;
+  }
+  .rem-archive-toggle:hover{ color: var(--remind); }
+
+  #toastStack{
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    max-width: 380px;
+    margin: 0 auto;
+    z-index: 999;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    pointer-events:none;
+  }
+  .toast{
+    background: var(--ink);
+    color:#FBFAF4;
+    border-radius:7px;
+    padding: 11px 14px;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    pointer-events:auto;
+    animation: toast-in .18s ease;
+  }
+  .toast .close{
+    border:none; background:none; color:#FBFAF4; opacity:.7;
+    font-size:15px; cursor:pointer; flex:0 0 auto;
+  }
+  @keyframes toast-in{ from{ opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+  .idea-empty{
+    color: var(--ink-soft);
+    font-size:13px;
+    padding: 4px 2px 12px;
+  }
+  .add-idea-row{
+    display:flex;
+    gap:6px;
+  }
+  .add-idea-row input{
+    flex:1;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:5px;
+    padding: 8px 10px;
+    font-family:inherit;
+    font-size:13.5px;
+    color:var(--ink);
+    outline:none;
+  }
+  .add-idea-row input:focus{ border-color: var(--idea); }
+  .add-idea-row button{
+    border:none;
+    background: var(--idea);
+    color:#fff;
+    width:34px;
+    border-radius:5px;
+    font-size:19px;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  h2.section-title{
+    font-size:15px;
+    font-weight:700;
+    margin: 0 0 10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  h2.section-title .dot{
+    width:9px;height:9px;border-radius:50%;
+    background: var(--habit);
+    flex:0 0 auto;
+  }
+
+  /* ---------- habits tracker ---------- */
+  .habits{
+    background: var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding: 16px 16px 14px;
+    margin-bottom: 26px;
+  }
+  .habits-scroll{ overflow-x:auto; }
+  table.habit-table{
+    border-collapse:collapse;
+    width:100%;
+    min-width: 560px;
+  }
+  table.habit-table th, table.habit-table td{
+    padding: 7px 6px;
+    text-align:center;
+    font-size:12.5px;
+    color: var(--ink-soft);
+    font-weight:600;
+  }
+  table.habit-table thead th:first-child, table.habit-table tbody td.habit-name{
+    text-align:right;
+    color: var(--ink);
+    font-weight:600;
+    min-width: 150px;
+  }
+  table.habit-table tbody tr{
+    border-top:1px dashed var(--line);
+  }
+  .habit-name-txt{
+    outline:none;
+    font-size:13.5px;
+    padding: 2px 0;
+    display:inline-block;
+    min-width: 40px;
+  }
+  .habit-check{
+    width:19px;height:19px;
+    border-radius:5px;
+    border:1.6px solid var(--ink-soft);
+    margin: 0 auto;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .habit-check.on{
+    background: var(--habit);
+    border-color: var(--habit);
+  }
+  .habit-check.on::after{
+    content:"";
+    width:5px; height:9px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg) translate(-1px,-1px);
+  }
+  .habit-del{
+    border:none;background:none;color:var(--ink-soft);
+    font-size:15px;cursor:pointer;opacity:0;transition:opacity .12s;
+  }
+  tr:hover .habit-del{ opacity:1; }
+
+  .add-habit-row{
+    display:flex;
+    gap:6px;
+    margin-top: 10px;
+    max-width: 340px;
+  }
+  .add-habit-row input{
+    flex:1;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:5px;
+    padding: 8px 10px;
+    font-family:inherit;
+    font-size:13.5px;
+    color:var(--ink);
+    outline:none;
+  }
+  .add-habit-row input:focus{ border-color: var(--habit); }
+  .add-habit-row button{
+    border:none;
+    background: var(--habit);
+    color:#fff;
+    width:34px;
+    border-radius:5px;
+    font-size:19px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .habit-empty{
+    color:var(--ink-soft);
+    font-size:13px;
+    padding: 6px 2px 4px;
+  }
+
+  /* ---------- weekly board ---------- */
+  .board{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 14px;
+  }
+
+  .day{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    display:flex;
+    flex-direction:column;
+    min-height: 260px;
+    overflow:hidden;
+  }
+  .day .tab{
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+  }
+  .day .tab::before{
+    content:"";
+    position:absolute;
+    top:0; right:0; left:0;
+    height:4px;
+    background: var(--dc);
+  }
+  .day .tab .name{
+    font-weight: 700;
+    font-size: 15px;
+    margin-top:2px;
+  }
+  .day .tab .count{
+    font-size:12px;
+    font-weight:700;
+    color: var(--dc);
+    background: color-mix(in srgb, var(--dc) 14%, transparent);
+    padding: 2px 8px;
+    border-radius: 20px;
+    min-width: 34px;
+    text-align:center;
+  }
+
+  .tasks{
+    flex:1;
+    padding: 6px 10px;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    overflow-y:auto;
+  }
+  .task{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    padding: 8px 4px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .task:last-child{ border-bottom:none; }
+
+  .task .box{
+    width:17px; height:17px;
+    flex:0 0 17px;
+    margin-top:2px;
+    border-radius:4px;
+    border: 1.6px solid var(--ink-soft);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+  }
+  .task.done .box{
+    background: var(--dc);
+    border-color: var(--dc);
+  }
+  .task.done .box::after{
+    content:"";
+    width:5px; height:9px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg) translate(-1px,-1px);
+  }
+
+  .task .txt{
+    flex:1;
+    font-size:14px;
+    line-height:1.5;
+    outline:none;
+    word-break: break-word;
+    padding-top:1px;
+  }
+  .task.done .txt{
+    text-decoration: line-through;
+    color: var(--ink-soft);
+  }
+
+  .task .del{
+    flex:0 0 auto;
+    border:none;
+    background:none;
+    color: var(--ink-soft);
+    font-size:16px;
+    cursor:pointer;
+    line-height:1;
+    padding:2px 4px;
+    opacity:0;
+    transition: opacity .12s;
+  }
+  .task:hover .del{ opacity:1; }
+
+  .empty{
+    color: var(--ink-soft);
+    font-size:13px;
+    text-align:center;
+    padding: 22px 8px;
+  }
+
+  .addrow{
+    border-top: 1px solid var(--line);
+    padding: 8px;
+    display:flex;
+    gap:6px;
+  }
+  .addrow input{
+    flex:1;
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:5px;
+    padding: 8px 10px;
+    font-family:inherit;
+    font-size:13.5px;
+    color:var(--ink);
+    outline:none;
+  }
+  .addrow input:focus{ border-color: var(--dc); }
+  .addrow button{
+    border:none;
+    background: var(--dc);
+    color:#fff;
+    width:34px;
+    border-radius:5px;
+    font-size:19px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .addrow button:active{ transform: scale(0.94); }
+
+  footer{
+    margin-top: 26px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color: var(--ink-soft);
+    font-size:12.5px;
+  }
+  footer button{
+    border:1px solid var(--line);
+    background:transparent;
+    color: var(--ink-soft);
+    padding: 7px 14px;
+    border-radius:5px;
+    font-family:inherit;
+    font-size:12.5px;
+    cursor:pointer;
+  }
+  footer button:hover{ border-color: var(--coral); color: var(--coral); }
+
+  #installBar{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    background: var(--ink);
+    color:#FBFAF4;
+    padding: 10px 14px;
+    border-radius:7px;
+    margin-bottom:20px;
+    font-size:13px;
+  }
+  #installBar button{
+    border:none;
+    background: var(--coral);
+    color:#fff;
+    padding:7px 14px;
+    border-radius:5px;
+    font-family:inherit;
+    font-size:12.5px;
+    font-weight:700;
+    cursor:pointer;
+    flex:0 0 auto;
+  }
+  #installBar .close{
+    background:none;
+    color:#FBFAF4;
+    opacity:.7;
+    padding:6px 8px;
+    font-weight:400;
+  }
+
+  .loading{
+    text-align:center;
+    padding: 60px 0;
+    color: var(--ink-soft);
+    font-size:14px;
+  }
+
+  @media (max-width: 980px){
+    .board{ grid-template-columns: repeat(4, minmax(220px,1fr)); overflow-x:auto; padding-bottom:8px; }
+    .day{ min-width: 220px; }
+  }
+  @media (max-width: 640px){
+    body{ padding: 18px 12px 40px; }
+    header{ align-items:flex-start; }
+    .overall{ text-align:right; }
+    .board{
+      display:flex;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      gap:12px;
+      margin: 0 -12px;
+      padding: 0 12px 8px;
+    }
+    .day{ min-width: 82%; scroll-snap-align:start; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="titles">
+      <h1>برنامه هفتگی</h1>
+      <p>کارهای هر روز رو بنویس و همون‌طور که پیش می‌ری، تیک بزن</p>
+    </div>
+    <div class="overall" id="overall">در حال بارگذاری…</div>
+  </header>
+
+  <div id="installBar">
+    <span id="installMsg">این صفحه رو به هوم‌اسکرین گوشیت اضافه کن تا مثل یه اپ جدا بازش کنی</span>
+    <button id="installBtn" type="button">نصب</button>
+    <button class="close" id="installClose" type="button" aria-label="بستن">×</button>
+  </div>
+
+  <div id="root">
+    <div class="loading">در حال بارگذاری برنامه…</div>
+  </div>
+
+  <div id="toastStack"></div>
+
+  <footer>
+    <span>تغییرات به‌صورت خودکار ذخیره می‌شن</span>
+    <button id="resetBtn" type="button">پاک کردن همه</button>
+  </footer>
+</div>
+
+<script>
+const DAYS = [
+  { key:'sat', name:'شنبه',      short:'ش',  color:'#6B8F71' },
+  { key:'sun', name:'یک‌شنبه',    short:'ی',  color:'#B98B2E' },
+  { key:'mon', name:'دوشنبه',    short:'د',  color:'#7A6C93' },
+  { key:'tue', name:'سه‌شنبه',    short:'س',  color:'#4E7A8C' },
+  { key:'wed', name:'چهارشنبه',  short:'چ',  color:'#C1663A' },
+  { key:'thu', name:'پنجشنبه',   short:'پ',  color:'#8A9A5B' },
+  { key:'fri', name:'جمعه',      short:'ج',  color:'#D1512D' },
+];
+const STORAGE_KEY = 'weekly-plan-v1';
+
+let state = null;
+// state = { days: { sat:[{id,text,done}], ... }, habits: [{id,text}], habitDone: { habitId: { sat:true,... } } }
+
+function emptyDays(){
+  const s = {};
+  DAYS.forEach(d => s[d.key] = []);
+  return s;
+}
+function emptyState(){
+  return { days: emptyDays(), habits: [], habitDone: {}, ideas: [], reminders: [] };
+}
+
+function uid(prefix){
+  return (prefix||'t') + Math.random().toString(36).slice(2,10);
+}
+
+function migrate(parsed){
+  if(!parsed) return emptyState();
+  if(parsed.days && parsed.habits){
+    // ensure all day keys exist
+    DAYS.forEach(d => { if(!parsed.days[d.key]) parsed.days[d.key] = []; });
+    if(!parsed.habitDone) parsed.habitDone = {};
+    if(!Array.isArray(parsed.ideas)) parsed.ideas = [];
+    parsed.ideas.forEach(i => {
+      if(typeof i.rating !== 'number'){
+        i.rating = (i.starred === true) ? 5 : 0; // migrate old boolean star
+      }
+      delete i.starred;
+      if(typeof i.note !== 'string') i.note = '';
+      if(typeof i.category !== 'string') i.category = '';
+    });
+    if(!Array.isArray(parsed.reminders)) parsed.reminders = [];
+    parsed.reminders.forEach(r => {
+      if(typeof r.status !== 'string') r.status = 'active';
+      if(typeof r.priority !== 'string') r.priority = 'medium';
+      if(typeof r.dayLink !== 'string') r.dayLink = '';
+      if(typeof r.lastFiredKey !== 'string') r.lastFiredKey = '';
+    });
+    return parsed;
+  }
+  // old flat format: { sat:[...], sun:[...], ... }
+  const days = emptyDays();
+  DAYS.forEach(d => { if(Array.isArray(parsed[d.key])) days[d.key] = parsed[d.key]; });
+  return { days, habits: [], habitDone: {}, ideas: [], reminders: [] };
+}
+
+async function load(){
+  try{
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : null;
+    state = migrate(parsed);
+  }catch(e){
+    state = emptyState();
+  }
+  state.ideas.forEach(i => { if(i.note && i.note.trim() !== '') expandedNotes.add(i.id); });
+  render();
+  checkReminders();
+  setInterval(checkReminders, 20000);
+}
+
+async function save(){
+  try{
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }catch(e){
+    console.error('ذخیره‌سازی ناموفق بود', e);
+  }
+}
+
+/* ---- day tasks ---- */
+function addTask(dayKey, text){
+  const trimmed = text.trim();
+  if(!trimmed) return;
+  state.days[dayKey].push({ id: uid('t'), text: trimmed, done:false });
+  save(); render();
+}
+function toggleTask(dayKey, id){
+  const t = state.days[dayKey].find(t => t.id === id);
+  if(t){ t.done = !t.done; save(); render(); }
+}
+function deleteTask(dayKey, id){
+  state.days[dayKey] = state.days[dayKey].filter(t => t.id !== id);
+  save(); render();
+}
+function editTask(dayKey, id, newText){
+  const t = state.days[dayKey].find(t => t.id === id);
+  if(!t) return;
+  const trimmed = newText.trim();
+  if(!trimmed){ deleteTask(dayKey, id); return; }
+  t.text = trimmed;
+  save();
+}
+
+/* ---- daily habits ---- */
+function addHabit(text){
+  const trimmed = text.trim();
+  if(!trimmed) return;
+  state.habits.push({ id: uid('h'), text: trimmed });
+  save(); render();
+}
+function deleteHabit(id){
+  state.habits = state.habits.filter(h => h.id !== id);
+  delete state.habitDone[id];
+  save(); render();
+}
+function editHabit(id, newText){
+  const h = state.habits.find(h => h.id === id);
+  if(!h) return;
+  const trimmed = newText.trim();
+  if(!trimmed){ deleteHabit(id); return; }
+  h.text = trimmed;
+  save();
+}
+function toggleHabit(id, dayKey){
+  if(!state.habitDone[id]) state.habitDone[id] = {};
+  state.habitDone[id][dayKey] = !state.habitDone[id][dayKey];
+  save(); render();
+}
+
+function computeOverall(){
+  let total = 0, done = 0;
+  DAYS.forEach(d => {
+    state.days[d.key].forEach(t => { total++; if(t.done) done++; });
+  });
+  state.habits.forEach(h => {
+    DAYS.forEach(d => {
+      total++;
+      if(state.habitDone[h.id] && state.habitDone[h.id][d.key]) done++;
+    });
+  });
+  return { total, done };
+}
+
+/* ---- ideas ---- */
+const expandedNotes = new Set(); // transient UI state, not persisted
+
+function addIdea(text){
+  const trimmed = text.trim();
+  if(!trimmed) return;
+  state.ideas.push({ id: uid('i'), text: trimmed, rating:0, note:'', category:'' });
+  save(); render();
+}
+function deleteIdea(id){
+  state.ideas = state.ideas.filter(i => i.id !== id);
+  expandedNotes.delete(id);
+  save(); render();
+}
+function editIdea(id, newText){
+  const idea = state.ideas.find(i => i.id === id);
+  if(!idea) return;
+  const trimmed = newText.trim();
+  if(!trimmed){ deleteIdea(id); return; }
+  idea.text = trimmed;
+  save();
+}
+function setRating(id, value){
+  const idea = state.ideas.find(i => i.id === id);
+  if(!idea) return;
+  idea.rating = (idea.rating === value) ? 0 : value; // click same star again to clear
+  save(); render();
+}
+function editNote(id, newNote){
+  const idea = state.ideas.find(i => i.id === id);
+  if(!idea) return;
+  idea.note = newNote.trim();
+  save();
+}
+function editCategory(id, newCategory){
+  const idea = state.ideas.find(i => i.id === id);
+  if(!idea) return;
+  idea.category = newCategory.trim();
+  save(); render();
+}
+
+const CATEGORY_PALETTE = ['#6B8F71','#B98B2E','#7A6C93','#4E7A8C','#C1663A','#8A9A5B','#D1512D'];
+function categoryColor(name){
+  if(!name) return '#8C9488';
+  let h = 0;
+  for(let i=0;i<name.length;i++) h = (h*31 + name.charCodeAt(i)) >>> 0;
+  return CATEGORY_PALETTE[h % CATEGORY_PALETTE.length];
+}
+function toggleNoteOpen(id){
+  if(expandedNotes.has(id)) expandedNotes.delete(id);
+  else expandedNotes.add(id);
+  render();
+}
+
+/* ---- reminders ---- */
+const PRIORITIES = {
+  low:    { label:'کم',     color:'#8A9A5B' },
+  medium: { label:'متوسط',  color:'#B98B2E' },
+  high:   { label:'زیاد',   color:'#D1512D' },
+};
+let remFormOpen = false;
+let remArchiveOpen = false;
+
+function pad2(n){ return String(n).padStart(2,'0'); }
+function todayISO(){
+  const d = new Date();
+  return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+}
+function jsWeekdayToKey(jsDay){
+  const map = {6:'sat',0:'sun',1:'mon',2:'tue',3:'wed',4:'thu',5:'fri'};
+  return map[jsDay];
+}
+
+function addReminder(data){
+  const text = data.text.trim();
+  if(!text || !data.time) return;
+  if(data.mode === 'once' && !data.date) return;
+  if(data.mode === 'weekly' && !data.weekday) return;
+  state.reminders.push({
+    id: uid('r'),
+    text,
+    mode: data.mode,          // 'once' | 'daily' | 'weekly'
+    date: data.date || '',
+    time: data.time,
+    weekday: data.weekday || '',
+    dayLink: data.dayLink || '',
+    priority: data.priority || 'medium',
+    status: 'active',
+    lastFiredKey: ''
+  });
+  save(); render();
+  requestNotifPermission();
+}
+function deleteReminder(id){
+  state.reminders = state.reminders.filter(r => r.id !== id);
+  save(); render();
+}
+function setReminderStatus(id, status){
+  const r = state.reminders.find(r => r.id === id);
+  if(!r) return;
+  r.status = status;
+  save(); render();
+}
+function editReminderText(id, newText){
+  const r = state.reminders.find(r => r.id === id);
+  if(!r) return;
+  const trimmed = newText.trim();
+  if(!trimmed){ deleteReminder(id); return; }
+  r.text = trimmed;
+  save();
+}
+function convertReminderToTask(id){
+  const r = state.reminders.find(r => r.id === id);
+  if(!r) return;
+  const targetDay = r.dayLink || jsWeekdayToKey(new Date().getDay());
+  addTask(targetDay, r.text);
+  setReminderStatus(id, 'done');
+}
+
+function reminderMeta(r){
+  if(r.mode === 'once'){
+    const overdue = r.status === 'active' && new Date(`${r.date}T${r.time}`) < new Date();
+    return { label: `${r.date} — ساعت ${r.time}`, overdue };
+  }
+  if(r.mode === 'daily'){
+    return { label: `هر روز — ساعت ${r.time}`, overdue:false };
+  }
+  const dayObj = DAYS.find(d => d.key === r.weekday);
+  return { label: `هر هفته ${dayObj ? dayObj.name : ''} — ساعت ${r.time}`, overdue:false };
+}
+
+function playBeep(){
+  try{
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new Ctx();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.frequency.value = 880;
+    g.gain.value = 0.16;
+    o.start();
+    setTimeout(() => { o.stop(); ctx.close(); }, 220);
+  }catch(e){}
+}
+
+function requestNotifPermission(){
+  try{
+    if('Notification' in window && Notification.permission === 'default'){
+      Notification.requestPermission();
+    }
+  }catch(e){}
+}
+
+function showToast(text){
+  const stack = document.getElementById('toastStack');
+  if(!stack) return;
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  const span = document.createElement('span');
+  span.textContent = '⏰ ' + text;
+  const close = document.createElement('button');
+  close.className = 'close';
+  close.type = 'button';
+  close.textContent = '×';
+  close.addEventListener('click', () => toast.remove());
+  toast.appendChild(span);
+  toast.appendChild(close);
+  stack.appendChild(toast);
+  setTimeout(() => toast.remove(), 8000);
+}
+
+function fireReminder(r){
+  showToast(r.text);
+  playBeep();
+  try{
+    if('Notification' in window && Notification.permission === 'granted'){
+      new Notification('یادآوری: ' + r.text);
+    }
+  }catch(e){}
+}
+
+function checkReminders(){
+  if(!state || !state.reminders) return;
+  const now = new Date();
+  const today = todayISO();
+  let changed = false;
+
+  state.reminders.forEach(r => {
+    if(r.status !== 'active') return;
+
+    if(r.mode === 'once'){
+      const due = new Date(`${r.date}T${r.time}`);
+      const key = `${r.date}T${r.time}`;
+      if(now >= due && r.lastFiredKey !== key){
+        fireReminder(r);
+        r.lastFiredKey = key;
+        changed = true;
+      }
+    } else if(r.mode === 'daily'){
+      const due = new Date(`${today}T${r.time}`);
+      const key = `${today}T${r.time}`;
+      if(now >= due && r.lastFiredKey !== key){
+        fireReminder(r);
+        r.lastFiredKey = key;
+        changed = true;
+      }
+    } else if(r.mode === 'weekly'){
+      const todayKey = jsWeekdayToKey(now.getDay());
+      if(todayKey === r.weekday){
+        const due = new Date(`${today}T${r.time}`);
+        const key = `${today}T${r.time}`;
+        if(now >= due && r.lastFiredKey !== key){
+          fireReminder(r);
+          r.lastFiredKey = key;
+          changed = true;
+        }
+      }
+    }
+  });
+
+  if(changed){ save(); render(); }
+}
+
+/* ---------- render ---------- */
+function renderIdeas(){
+  const box = document.createElement('div');
+  box.className = 'ideas';
+
+  const title = document.createElement('h2');
+  title.className = 'section-title';
+  title.innerHTML = '<span class="dot" style="background:var(--idea)"></span> ایده‌های جدید';
+  box.appendChild(title);
+
+  const list = document.createElement('div');
+  list.className = 'idea-list';
+
+  if(state.ideas.length === 0){
+    const empty = document.createElement('div');
+    empty.className = 'idea-empty';
+    empty.textContent = 'هر ایده‌ای که به ذهنت رسید اینجا یادداشت کن';
+    list.appendChild(empty);
+  } else {
+    const sorted = [...state.ideas].sort((a,b) => b.rating - a.rating);
+
+    sorted.forEach(idea => {
+      const item = document.createElement('div');
+      item.className = 'idea-item';
+
+      const row = document.createElement('div');
+      row.className = 'idea-row';
+
+      const bullet = document.createElement('div');
+      bullet.className = 'bullet';
+
+      const txt = document.createElement('div');
+      txt.className = 'txt';
+      txt.contentEditable = 'true';
+      txt.textContent = idea.text;
+      txt.addEventListener('blur', () => editIdea(idea.id, txt.textContent));
+      txt.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter'){ e.preventDefault(); txt.blur(); }
+      });
+
+      const stars = document.createElement('div');
+      stars.className = 'stars';
+      for(let i=1; i<=5; i++){
+        const s = document.createElement('button');
+        s.type = 'button';
+        s.className = (i <= idea.rating) ? 'on' : '';
+        s.textContent = (i <= idea.rating) ? '★' : '☆';
+        s.setAttribute('aria-label', `امتیاز ${i} ستاره`);
+        s.addEventListener('click', () => setRating(idea.id, i));
+        stars.appendChild(s);
+      }
+
+      const cat = document.createElement('span');
+      cat.className = 'cat';
+      cat.style.setProperty('--cc', categoryColor(idea.category));
+      cat.contentEditable = 'true';
+      cat.setAttribute('data-placeholder', 'دسته‌بندی');
+      cat.textContent = idea.category;
+      cat.addEventListener('blur', () => editCategory(idea.id, cat.textContent));
+      cat.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ e.preventDefault(); cat.blur(); } });
+
+      const isOpen = expandedNotes.has(idea.id);
+      const noteBtn = document.createElement('button');
+      noteBtn.className = 'note-toggle' + (idea.note.trim() !== '' ? ' has-note' : '');
+      noteBtn.type = 'button';
+      noteBtn.textContent = isOpen ? 'بستن توضیح' : 'افزودن توضیح';
+      noteBtn.addEventListener('click', () => toggleNoteOpen(idea.id));
+
+      const del = document.createElement('button');
+      del.className = 'del';
+      del.type = 'button';
+      del.setAttribute('aria-label','حذف');
+      del.textContent = '×';
+      del.addEventListener('click', () => deleteIdea(idea.id));
+
+      row.appendChild(bullet);
+      row.appendChild(txt);
+      row.appendChild(cat);
+      row.appendChild(stars);
+      row.appendChild(noteBtn);
+      row.appendChild(del);
+      item.appendChild(row);
+
+      if(isOpen){
+        const note = document.createElement('div');
+        note.className = 'idea-note';
+        note.contentEditable = 'true';
+        note.setAttribute('data-placeholder', 'توضیح تکمیلی...');
+        note.textContent = idea.note;
+        note.addEventListener('blur', () => editNote(idea.id, note.textContent));
+        item.appendChild(note);
+      }
+
+      list.appendChild(item);
+    });
+  }
+  box.appendChild(list);
+
+  const addRow = document.createElement('div');
+  addRow.className = 'add-idea-row';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'ایده‌ی جدید...';
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter'){ addIdea(input.value); input.value=''; }
+  });
+  const addBtn = document.createElement('button');
+  addBtn.type = 'button';
+  addBtn.textContent = '+';
+  addBtn.addEventListener('click', () => { addIdea(input.value); input.value=''; input.focus(); });
+  addRow.appendChild(input);
+  addRow.appendChild(addBtn);
+  box.appendChild(addRow);
+
+  return box;
+}
+
+function renderReminders(){
+  const box = document.createElement('div');
+  box.className = 'reminders';
+
+  const head = document.createElement('div');
+  head.className = 'rem-head';
+  const title = document.createElement('h2');
+  title.className = 'section-title';
+  title.style.margin = '0';
+  title.innerHTML = '<span class="dot" style="background:var(--remind)"></span> یادآوری‌ها';
+  const toggleBtn = document.createElement('button');
+  toggleBtn.className = 'rem-add-toggle';
+  toggleBtn.type = 'button';
+  toggleBtn.textContent = remFormOpen ? 'بستن فرم' : '+ یادآوری جدید';
+  toggleBtn.addEventListener('click', () => { remFormOpen = !remFormOpen; render(); });
+  head.appendChild(title);
+  head.appendChild(toggleBtn);
+  box.appendChild(head);
+
+  if(remFormOpen){
+    box.appendChild(buildReminderForm());
+  }
+
+  const all = state.reminders;
+  const active = all.filter(r => r.status === 'active' && !reminderMeta(r).overdue);
+  const overdue = all.filter(r => r.status === 'active' && reminderMeta(r).overdue);
+  const archived = all.filter(r => r.status !== 'active');
+
+  active.sort((a,b) => a.time.localeCompare(b.time));
+
+  if(overdue.length > 0){
+    const lbl = document.createElement('div');
+    lbl.className = 'rem-group-label';
+    lbl.textContent = 'یادآوری‌های گذشته';
+    box.appendChild(lbl);
+    box.appendChild(buildReminderList(overdue, true));
+  }
+
+  if(all.length === 0){
+    const empty = document.createElement('div');
+    empty.className = 'rem-empty';
+    empty.textContent = 'یادآوری‌ای ثبت نشده — چیزی که نباید فراموش بشه رو اینجا اضافه کن';
+    box.appendChild(empty);
+  } else if(active.length > 0){
+    box.appendChild(buildReminderList(active, false));
+  } else if(overdue.length === 0){
+    const empty = document.createElement('div');
+    empty.className = 'rem-empty';
+    empty.textContent = 'یادآوری فعالی نداری';
+    box.appendChild(empty);
+  }
+
+  if(archived.length > 0){
+    const archBtn = document.createElement('button');
+    archBtn.className = 'rem-archive-toggle';
+    archBtn.type = 'button';
+    archBtn.textContent = (remArchiveOpen ? 'بستن آرشیو' : `آرشیو (${archived.length})`);
+    archBtn.addEventListener('click', () => { remArchiveOpen = !remArchiveOpen; render(); });
+    box.appendChild(archBtn);
+    if(remArchiveOpen){
+      box.appendChild(buildReminderList(archived, false));
+    }
+  }
+
+  return box;
+}
+
+function buildReminderForm(){
+  const form = document.createElement('div');
+  form.className = 'rem-form';
+
+  const textLabel = document.createElement('label');
+  textLabel.className = 'full';
+  textLabel.innerHTML = '<span>متن یادآوری</span>';
+  const textInput = document.createElement('input');
+  textInput.type = 'text';
+  textInput.placeholder = 'مثلاً زنگ زدن به دکتر';
+  textLabel.appendChild(textInput);
+
+  const modeLabel = document.createElement('label');
+  modeLabel.innerHTML = '<span>تکرار</span>';
+  const modeSelect = document.createElement('select');
+  modeSelect.innerHTML = `
+    <option value="once">یک‌بار</option>
+    <option value="daily">هر روز</option>
+    <option value="weekly">هفتگی</option>`;
+  modeLabel.appendChild(modeSelect);
+
+  const timeLabel = document.createElement('label');
+  timeLabel.innerHTML = '<span>ساعت</span>';
+  const timeInput = document.createElement('input');
+  timeInput.type = 'time';
+  timeInput.value = '09:00';
+  timeLabel.appendChild(timeInput);
+
+  const dateLabel = document.createElement('label');
+  dateLabel.innerHTML = '<span>تاریخ</span>';
+  const dateInput = document.createElement('input');
+  dateInput.type = 'date';
+  dateInput.value = todayISO();
+  dateLabel.appendChild(dateInput);
+
+  const weekdayLabel = document.createElement('label');
+  weekdayLabel.innerHTML = '<span>روز هفته</span>';
+  const weekdaySelect = document.createElement('select');
+  weekdaySelect.innerHTML = DAYS.map(d => `<option value="${d.key}">${d.name}</option>`).join('');
+  weekdayLabel.appendChild(weekdaySelect);
+  weekdayLabel.style.display = 'none';
+
+  function syncModeFields(){
+    dateLabel.style.display = modeSelect.value === 'once' ? 'flex' : 'none';
+    weekdayLabel.style.display = modeSelect.value === 'weekly' ? 'flex' : 'none';
+  }
+  modeSelect.addEventListener('change', syncModeFields);
+  syncModeFields();
+
+  const prioLabel = document.createElement('label');
+  prioLabel.innerHTML = '<span>اهمیت</span>';
+  const prioSelect = document.createElement('select');
+  prioSelect.innerHTML = Object.entries(PRIORITIES).map(([k,v]) => `<option value="${k}" ${k==='medium'?'selected':''}>${v.label}</option>`).join('');
+  prioLabel.appendChild(prioSelect);
+
+  const dayLinkLabel = document.createElement('label');
+  dayLinkLabel.innerHTML = '<span>ارتباط با روز (اختیاری)</span>';
+  const dayLinkSelect = document.createElement('select');
+  dayLinkSelect.innerHTML = '<option value="">هیچ‌کدام</option>' + DAYS.map(d => `<option value="${d.key}">${d.name}</option>`).join('');
+  dayLinkLabel.appendChild(dayLinkSelect);
+
+  const actions = document.createElement('div');
+  actions.className = 'actions';
+  const saveBtn = document.createElement('button');
+  saveBtn.className = 'save-btn';
+  saveBtn.type = 'button';
+  saveBtn.textContent = 'ذخیره یادآوری';
+  saveBtn.addEventListener('click', () => {
+    addReminder({
+      text: textInput.value,
+      mode: modeSelect.value,
+      date: dateInput.value,
+      time: timeInput.value,
+      weekday: weekdaySelect.value,
+      dayLink: dayLinkSelect.value,
+      priority: prioSelect.value,
+    });
+    remFormOpen = false;
+  });
+  const cancelBtn = document.createElement('button');
+  cancelBtn.className = 'cancel-btn';
+  cancelBtn.type = 'button';
+  cancelBtn.textContent = 'انصراف';
+  cancelBtn.addEventListener('click', () => { remFormOpen = false; render(); });
+  actions.appendChild(saveBtn);
+  actions.appendChild(cancelBtn);
+
+  form.appendChild(textLabel);
+  form.appendChild(modeLabel);
+  form.appendChild(timeLabel);
+  form.appendChild(dateLabel);
+  form.appendChild(weekdayLabel);
+  form.appendChild(prioLabel);
+  form.appendChild(dayLinkLabel);
+  form.appendChild(actions);
+
+  return form;
+}
+
+function buildReminderList(items, isOverdueGroup){
+  const list = document.createElement('div');
+  list.className = 'rem-list';
+
+  items.forEach(r => {
+    const meta = reminderMeta(r);
+    const item = document.createElement('div');
+    item.className = 'rem-item' + (r.status === 'done' ? ' done' : '') + (isOverdueGroup ? ' overdue' : '');
+
+    const prio = document.createElement('div');
+    prio.className = 'prio';
+    prio.style.background = PRIORITIES[r.priority] ? PRIORITIES[r.priority].color : '#999';
+    prio.title = PRIORITIES[r.priority] ? PRIORITIES[r.priority].label : '';
+
+    const body = document.createElement('div');
+    body.className = 'body';
+
+    const txt = document.createElement('div');
+    txt.className = 'txt';
+    txt.contentEditable = 'true';
+    txt.textContent = r.text;
+    txt.addEventListener('blur', () => editReminderText(r.id, txt.textContent));
+    txt.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ e.preventDefault(); txt.blur(); } });
+
+    const metaRow = document.createElement('div');
+    metaRow.className = 'meta';
+    const timeSpan = document.createElement('span');
+    timeSpan.textContent = meta.label;
+    metaRow.appendChild(timeSpan);
+    if(r.dayLink){
+      const dObj = DAYS.find(d => d.key === r.dayLink);
+      if(dObj){
+        const tag = document.createElement('span');
+        tag.className = 'daytag';
+        tag.style.setProperty('--tc', dObj.color);
+        tag.textContent = dObj.name;
+        metaRow.appendChild(tag);
+      }
+    }
+    if(r.status !== 'active'){
+      const statusSpan = document.createElement('span');
+      statusSpan.textContent = r.status === 'done' ? '(انجام‌شده)' : '(لغوشده)';
+      metaRow.appendChild(statusSpan);
+    }
+
+    body.appendChild(txt);
+    body.appendChild(metaRow);
+
+    const btns = document.createElement('div');
+    btns.className = 'btns';
+
+    if(r.status === 'active'){
+      const toTask = document.createElement('button');
+      toTask.type = 'button';
+      toTask.textContent = 'تبدیل به تسک';
+      toTask.addEventListener('click', () => convertReminderToTask(r.id));
+
+      const doneBtn = document.createElement('button');
+      doneBtn.type = 'button';
+      doneBtn.textContent = 'انجام‌شد';
+      doneBtn.addEventListener('click', () => setReminderStatus(r.id, 'done'));
+
+      const cancelBtn = document.createElement('button');
+      cancelBtn.type = 'button';
+      cancelBtn.className = 'danger';
+      cancelBtn.textContent = 'لغو';
+      cancelBtn.addEventListener('click', () => setReminderStatus(r.id, 'cancelled'));
+
+      btns.appendChild(toTask);
+      btns.appendChild(doneBtn);
+      btns.appendChild(cancelBtn);
+    } else {
+      const restoreBtn = document.createElement('button');
+      restoreBtn.type = 'button';
+      restoreBtn.textContent = 'بازگردانی';
+      restoreBtn.addEventListener('click', () => setReminderStatus(r.id, 'active'));
+      btns.appendChild(restoreBtn);
+    }
+
+    const delBtn = document.createElement('button');
+    delBtn.type = 'button';
+    delBtn.className = 'danger';
+    delBtn.textContent = 'حذف';
+    delBtn.addEventListener('click', () => deleteReminder(r.id));
+    btns.appendChild(delBtn);
+
+    item.appendChild(prio);
+    item.appendChild(body);
+    item.appendChild(btns);
+    list.appendChild(item);
+  });
+
+  return list;
+}
+
+function renderHabits(){
+  const box = document.createElement('div');
+  box.className = 'habits';
+
+  const title = document.createElement('h2');
+  title.className = 'section-title';
+  title.innerHTML = '<span class="dot"></span> عادت‌های روزانه';
+  box.appendChild(title);
+
+  if(state.habits.length === 0){
+    const empty = document.createElement('div');
+    empty.className = 'habit-empty';
+    empty.textContent = 'هنوز عادتی اضافه نکردی — مثلاً «نوشیدن آب» یا «۱۵ دقیقه پیاده‌روی»';
+    box.appendChild(empty);
+  } else {
+    const scroll = document.createElement('div');
+    scroll.className = 'habits-scroll';
+    const table = document.createElement('table');
+    table.className = 'habit-table';
+
+    const thead = document.createElement('thead');
+    const headRow = document.createElement('tr');
+    headRow.innerHTML = '<th>عادت</th>' + DAYS.map(d => `<th>${d.short}</th>`).join('') + '<th></th>';
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    state.habits.forEach(h => {
+      const tr = document.createElement('tr');
+
+      const nameTd = document.createElement('td');
+      nameTd.className = 'habit-name';
+      const nameTxt = document.createElement('span');
+      nameTxt.className = 'habit-name-txt';
+      nameTxt.contentEditable = 'true';
+      nameTxt.textContent = h.text;
+      nameTxt.addEventListener('blur', () => editHabit(h.id, nameTxt.textContent));
+      nameTxt.addEventListener('keydown', (e) => { if(e.key==='Enter'){ e.preventDefault(); nameTxt.blur(); } });
+      nameTd.appendChild(nameTxt);
+      tr.appendChild(nameTd);
+
+      DAYS.forEach(d => {
+        const td = document.createElement('td');
+        const on = !!(state.habitDone[h.id] && state.habitDone[h.id][d.key]);
+        const chk = document.createElement('div');
+        chk.className = 'habit-check' + (on ? ' on' : '');
+        chk.addEventListener('click', () => toggleHabit(h.id, d.key));
+        td.appendChild(chk);
+        tr.appendChild(td);
+      });
+
+      const delTd = document.createElement('td');
+      const delBtn = document.createElement('button');
+      delBtn.className = 'habit-del';
+      delBtn.type = 'button';
+      delBtn.textContent = '×';
+      delBtn.setAttribute('aria-label','حذف عادت');
+      delBtn.addEventListener('click', () => deleteHabit(h.id));
+      delTd.appendChild(delBtn);
+      tr.appendChild(delTd);
+
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    scroll.appendChild(table);
+    box.appendChild(scroll);
+  }
+
+  const addRow = document.createElement('div');
+  addRow.className = 'add-habit-row';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'عادت جدید...';
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter'){ addHabit(input.value); input.value=''; }
+  });
+  const addBtn = document.createElement('button');
+  addBtn.type = 'button';
+  addBtn.textContent = '+';
+  addBtn.addEventListener('click', () => { addHabit(input.value); input.value=''; input.focus(); });
+  addRow.appendChild(input);
+  addRow.appendChild(addBtn);
+  box.appendChild(addRow);
+
+  return box;
+}
+
+function renderBoard(){
+  const board = document.createElement('div');
+  board.className = 'board';
+
+  DAYS.forEach(day => {
+    const tasks = state.days[day.key];
+    const doneCount = tasks.filter(t=>t.done).length;
+
+    const card = document.createElement('div');
+    card.className = 'day';
+    card.style.setProperty('--dc', day.color);
+
+    const tab = document.createElement('div');
+    tab.className = 'tab';
+    tab.innerHTML = `<span class="name">${day.name}</span><span class="count">${doneCount}/${tasks.length}</span>`;
+    card.appendChild(tab);
+
+    const list = document.createElement('div');
+    list.className = 'tasks';
+
+    if(tasks.length === 0){
+      const empty = document.createElement('div');
+      empty.className = 'empty';
+      empty.textContent = 'کاری ثبت نشده';
+      list.appendChild(empty);
+    }
+
+    tasks.forEach(t => {
+      const row = document.createElement('div');
+      row.className = 'task' + (t.done ? ' done' : '');
+
+      const box = document.createElement('div');
+      box.className = 'box';
+      box.addEventListener('click', () => toggleTask(day.key, t.id));
+
+      const txt = document.createElement('div');
+      txt.className = 'txt';
+      txt.contentEditable = 'true';
+      txt.textContent = t.text;
+      txt.addEventListener('blur', () => editTask(day.key, t.id, txt.textContent));
+      txt.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter'){ e.preventDefault(); txt.blur(); }
+      });
+
+      const del = document.createElement('button');
+      del.className = 'del';
+      del.type = 'button';
+      del.setAttribute('aria-label','حذف');
+      del.textContent = '×';
+      del.addEventListener('click', () => deleteTask(day.key, t.id));
+
+      row.appendChild(box);
+      row.appendChild(txt);
+      row.appendChild(del);
+      list.appendChild(row);
+    });
+
+    card.appendChild(list);
+
+    const addrow = document.createElement('div');
+    addrow.className = 'addrow';
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'کار جدید...';
+    input.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter'){
+        addTask(day.key, input.value);
+        input.value = '';
+      }
+    });
+    const addBtn = document.createElement('button');
+    addBtn.type = 'button';
+    addBtn.textContent = '+';
+    addBtn.addEventListener('click', () => {
+      addTask(day.key, input.value);
+      input.value = '';
+      input.focus();
+    });
+    addrow.appendChild(input);
+    addrow.appendChild(addBtn);
+    card.appendChild(addrow);
+
+    board.appendChild(card);
+  });
+
+  return board;
+}
+
+function render(){
+  const root = document.getElementById('root');
+  root.innerHTML = '';
+  root.appendChild(renderReminders());
+  root.appendChild(renderIdeas());
+  root.appendChild(renderHabits());
+  root.appendChild(renderBoard());
+
+  const { total, done } = computeOverall();
+  document.getElementById('overall').innerHTML =
+    total === 0
+      ? 'هنوز کاری اضافه نکردی'
+      : `<b>${done} از ${total}</b> کار انجام شده`;
+}
+
+document.getElementById('resetBtn').addEventListener('click', async () => {
+  if(!confirm('همه‌ی کارها و عادت‌های ثبت‌شده پاک بشه؟')) return;
+  state = emptyState();
+  await save();
+  render();
+});
+
+load();
+
+/* ---------- add-to-home-screen handling ---------- */
+(function(){
+  const bar = document.getElementById('installBar');
+  const msg = document.getElementById('installMsg');
+  const btn = document.getElementById('installBtn');
+  const closeBtn = document.getElementById('installClose');
+
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if(isStandalone) return; // already installed, nothing to show
+
+  const isIOS = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+  let deferredPrompt = null;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    bar.style.display = 'flex';
+  });
+
+  if(isIOS){
+    msg.textContent = 'برای نصب: دکمه اشتراک‌گذاری Safari رو بزن و «Add to Home Screen» رو انتخاب کن';
+    btn.style.display = 'none';
+    bar.style.display = 'flex';
+  }
+
+  btn.addEventListener('click', async () => {
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    bar.style.display = 'none';
+  });
+
+  closeBtn.addEventListener('click', () => { bar.style.display = 'none'; });
+})();
+</script>
+</body>
+</html>
